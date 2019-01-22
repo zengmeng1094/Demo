@@ -1,4 +1,4 @@
-package DataStruct;
+package demo;
 
 public class LinkedListReverse {
 
