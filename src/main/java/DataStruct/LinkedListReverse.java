@@ -22,7 +22,7 @@ public class LinkedListReverse {
     }
 
     //遍历反转
-    public static LinkedNode reverse(LinkedNode head){
+    public static LinkedNode reverseForeach(LinkedNode head){
         //头节点为空或者只有一个头节点
         if (head == null || head.getNext() == null){
             return head;
@@ -41,13 +41,28 @@ public class LinkedListReverse {
         return pre;
     }
 
+    //递归反转
+    public static LinkedNode reserveRegression(LinkedNode head){
+        //头节点为空或者只有一个头节点
+        if (head == null || head.getNext() == null){
+            return head;
+        }
+        //从第二个节点开始递归
+        LinkedNode pre = reserveRegression(head.getNext());
+        head.getNext().setNext(head);
+        head.setNext(null);
+        return pre;
+    }
+
     public static void main(String[] args) {
         //建立一个新的链表
         LinkedNode head = createLinkedList();
         //打印当前链表
         printLinkedList(head);
         //遍历反转
-        LinkedNode reHead = reverse(head);
+        //LinkedNode reHead = reverseForeach(head);
+        //递归反转
+        LinkedNode reHead = reserveRegression(head);
         printLinkedList(reHead);
     }
 
